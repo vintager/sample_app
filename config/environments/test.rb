@@ -30,6 +30,9 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+  #只需设定host值，是什么不重要？？
+  # config.action_mailer.default_url_options = { host: '192.168.2.105:3000'}
+  config.action_mailer.default_url_options = { host: 'example.com'}
 
   # Randomize the order test cases are executed.
   config.active_support.test_order = :random
