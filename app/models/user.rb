@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :microposts, dependent: :destroy
 	#增加虚拟属性
   attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -69,6 +70,10 @@ class User < ActiveRecord::Base
   #如果密码重设超时失效了， 返回true
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+  
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private
